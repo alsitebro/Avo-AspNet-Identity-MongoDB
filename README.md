@@ -7,11 +7,11 @@ MongoDB storage provider library for ASP.NET Identity 2.2.1
 
 ASP.NET MVC 5 shipped with a new Identity system (in the Microsoft.AspNet.Identity.Core package) in order to support both local login and remote logins via OpenID/OAuth, but only ships with an Entity Framework provider (Microsoft.AspNet.Identity.EntityFramework).
 
-ASP.NET Identity 2.x has matured at version 2.2.1 and the ASP.NET team is now focussed on [https://github.com/aspnet/Identity/](3.x for ASP.NET Core). [https://github.com/tugberkugurlu/AspNetCore.Identity.MongoDB](Tugburk Ugurlu) currently maintains a MongoDB provider if you're interested in that.
+ASP.NET Identity 2.x has matured at version 2.2.1 and the ASP.NET team is now focussed on [3.x for ASP.NET Core](https://github.com/aspnet/Identity/). [Tugburk Ugurlu](https://github.com/tugberkugurlu/AspNetCore.Identity.MongoDB) currently maintains a MongoDB provider if you're interested in that.
 
 I did this first as part of a learning process, then thought I'd share it with the community.
 
-I aim to update this project as and when the [http://mongodb.github.io/mongo-csharp-driver/](MongoDB.Driver for .NET) is updated.
+I aim to update this project as and when the [MongoDB.Driver for .NET](http://mongodb.github.io/mongo-csharp-driver/) is updated.
 
 Please feel free to use, review and improve.
 
