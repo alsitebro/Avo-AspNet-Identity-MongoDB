@@ -32,7 +32,6 @@ Please feel free to use, review and improve.
         * IUserPasswordStore<TUser, string>
         * IUserLockoutStore<TUser, string>
         * IUserTwoFactorStore<TUser, string>
-	* UserStore constructor requires an instance of IMongoCollection<TUser>. This approach was chosen to allow flexibility and configurability.
     * UserClaimStore<TUser> which inherits UserStore<TUser> and implements IUserClaimStore<TUser>. Suitable for use with claims-based identity
     * UserRoleStore<TUser> which inherits UserStore<TUser> and implements IUserRoleStore<TUser>. Suitable for use with roles-based identity.
 
