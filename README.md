@@ -69,8 +69,26 @@ The UserStore does not require connection strings in this implementation as it a
 
 ```C#
 UserStore(IMongoCollection<TUser> userCollection)
+new UserClaimStore<IdentityUser>(db.GetCollection<IdentityUser>("app_users")
 ```
-<code>new UserClaimStore<IdentityUser>(db.GetCollection<IdentityUser>("app_users"))</code>
+
+## OWIN 
+```C#
+//ApplicationUserManager.cs
+public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context, IMongoCollection<ApplicationUser> userCollection) 
+ {
+    var manager = new ApplicationUserManager(new UserClaimStore<ApplicationUser>(userCollection));
+    ...
+ }	   
+//Startup.Auth.cs
+app.CreatePerOwinContext<ApplicationUserManager>((options, context) =>
+{
+	var identityConnectionString = ConfigurationManager.ConnectionStrings["IdentityConnection"].ConnectionString;
+	var identityDb = new MongoClient(identityConnectionString).GetDatabase(identityConnectionString.Split('/').Last());
+	var userCollection = identityDb.GetCollection<ApplicationUser>("app_users");
+	return ApplicationUserManager.Create(options,context,userCollection);
+});
+```
 
 ## Thanks ##
 
