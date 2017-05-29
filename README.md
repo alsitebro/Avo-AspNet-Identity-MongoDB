@@ -63,23 +63,21 @@ public AccountController()
         new UserStore<ApplicationUser>(userCollection);
 }
 ```
-
-## Constructor ##
-The UserStore does not require connection strings in this implementation as it assumed that the developer would be managing interaction with the MongoDB database. The constructor therefore expects an instance of IMongoCollection<TUser>
+5. The UserStore does not require connection strings in this implementation as it assumed that the developer would be managing interaction with the MongoDB database. The constructor therefore expects an instance of IMongoCollection<TUser>
 
 ```C#
 UserStore(IMongoCollection<TUser> userCollection)
 new UserClaimStore<IdentityUser>(db.GetCollection<IdentityUser>("app_users")
 ```
 
-## OWIN 
+6. OWIN integration
 ```C#
 //ApplicationUserManager.cs
 public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context, UserClaimStore<ApplicationUser> userStore) 
- {
-    var manager = new ApplicationUserManager(userStore);
-    ...
- }	   
+{
+	var manager = new ApplicationUserManager(userStore);
+	...
+}	   
 //Startup.Auth.cs
 app.CreatePerOwinContext<ApplicationUserManager>((options, context) =>
 {
