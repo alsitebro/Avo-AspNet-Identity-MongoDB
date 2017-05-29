@@ -75,9 +75,9 @@ new UserClaimStore<IdentityUser>(db.GetCollection<IdentityUser>("app_users")
 ## OWIN 
 ```C#
 //ApplicationUserManager.cs
-public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context, IMongoCollection<ApplicationUser> userCollection) 
+public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context, UserClaimStore<ApplicationUser> userStore) 
  {
-    var manager = new ApplicationUserManager(new UserClaimStore<ApplicationUser>(userCollection));
+    var manager = new ApplicationUserManager(userStore);
     ...
  }	   
 //Startup.Auth.cs
@@ -86,7 +86,7 @@ app.CreatePerOwinContext<ApplicationUserManager>((options, context) =>
 	var identityConnectionString = ConfigurationManager.ConnectionStrings["IdentityConnection"].ConnectionString;
 	var identityDb = new MongoClient(identityConnectionString).GetDatabase(identityConnectionString.Split('/').Last());
 	var userCollection = identityDb.GetCollection<ApplicationUser>("app_users");
-	return ApplicationUserManager.Create(options,context,userCollection);
+	return ApplicationUserManager.Create(options,context,new UserClaimStore<ApplicationUser>(userCollection));
 });
 ```
 
@@ -94,4 +94,4 @@ app.CreatePerOwinContext<ApplicationUserManager>((options, context) =>
 
 This work was inspired by projects previously supported by [InspectorIT](https://github.com/InspectorIT/MongoDB.AspNet.Identity) and [g0t4](https://github.com/g0t4/aspnet-identity-mongo).
 
-I would like to thank them for the work they've already done, which inspired this project.
+I would like to thank them for the work they've already done.
