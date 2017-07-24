@@ -20,7 +20,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
             manager.Create(user);
 
             var savedUser = Users.AsQueryable().Single();
-            Expect(savedUser.UserName, Is.EqualTo(user.UserName));
+            Assert.That(savedUser.UserName, Is.EqualTo(user.UserName));
         }
 
         [Test]
@@ -33,8 +33,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
             var foundUser = manager.FindByName(userName);
 
-            Expect(foundUser, Is.Not.Null);
-            Expect(foundUser.UserName, Is.EqualTo(userName));
+            Assert.That(foundUser, Is.Not.Null);
+            Assert.That(foundUser.UserName, Is.EqualTo(userName));
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
             var foundUser = manager.FindByName("nouserbyname");
 
-            Expect(foundUser, Is.Null);
+            Assert.That(foundUser, Is.Null);
         }
 
         [Test]
@@ -56,8 +56,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
             var foundUser = manager.FindById(user.Id);
 
-            Expect(foundUser, Is.Not.Null);
-            Expect(foundUser.Id, Is.EqualTo(user.Id));
+            Assert.That(foundUser, Is.Not.Null);
+            Assert.That(foundUser.Id, Is.EqualTo(user.Id));
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
             var foundUser = manager.FindById(ObjectId.GenerateNewId().ToString());
 
-            Expect(foundUser, Is.Null);
+            Assert.That(foundUser, Is.Null);
         }
 
         [Test]
@@ -76,11 +76,11 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
             var user = new IdentityUser("name");
             var manager = GetUserManager();
             manager.Create(user);
-            Expect(Users.AsQueryable(), Is.Not.Empty);
+            Assert.That(Users.AsQueryable(), Is.Not.Empty);
 
             manager.Delete(user);
 
-            Expect(Users.AsQueryable(), Is.Empty);
+            Assert.That(Users.AsQueryable(), Is.Empty);
         }
 
         [Test]
@@ -95,8 +95,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
             manager.Update(savedUser);
 
             var changedUser = Users.AsQueryable().Single();
-            Expect(changedUser, Is.Not.Null);
-            Expect(changedUser.UserName, Is.EqualTo("newname"));
+            Assert.That(changedUser, Is.Not.Null);
+            Assert.That(changedUser.UserName, Is.EqualTo("newname"));
         }
     }
 }

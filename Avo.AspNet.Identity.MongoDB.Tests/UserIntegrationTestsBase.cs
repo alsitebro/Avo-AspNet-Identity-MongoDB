@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Avo.AspNet.Identity.MongoDB.Tests
 {
-    public class UserIntegrationTestsBase: AssertionHelper
+    public class UserIntegrationTestsBase
     {
         protected IMongoDatabase Database;
         protected IMongoCollection<IdentityUser> Users;

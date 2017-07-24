@@ -36,7 +36,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			_manager.Create(_role);
 		    var roles = Database.GetCollection<ExtendedIdentityRole>("roles");
 			var savedRole = roles.AsQueryable().Single();
-			Expect(savedRole.ExtendedField, Is.EqualTo("extendedField"));
+			Assert.That(savedRole.ExtendedField, Is.EqualTo("extendedField"));
 		}
 
 		[Test]
@@ -47,7 +47,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			_manager.Create(_role);
 
 			var savedRole = _manager.FindById(_role.Id);
-			Expect(savedRole.ExtendedField, Is.EqualTo("extendedField"));
+			Assert.That(savedRole.ExtendedField, Is.EqualTo("extendedField"));
 		}
 	}
 }

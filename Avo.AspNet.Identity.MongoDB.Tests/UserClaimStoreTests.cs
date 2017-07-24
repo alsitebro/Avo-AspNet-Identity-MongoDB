@@ -18,7 +18,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var claims = manager.GetClaims(user.Id);
 
-			Expect(claims, Is.Empty);
+			Assert.That(claims, Is.Empty);
 		}
 
 		[Test]
@@ -31,8 +31,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.AddClaim(user.Id, new Claim("type", "value"));
 
 			var claim = manager.GetClaims(user.Id).Single();
-			Expect(claim.Type, Is.EqualTo("type"));
-			Expect(claim.Value, Is.EqualTo("value"));
+			Assert.That(claim.Type, Is.EqualTo("type"));
+			Assert.That(claim.Value, Is.EqualTo("value"));
 		}
 
 		[Test]
@@ -45,7 +45,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.RemoveClaim(user.Id, new Claim("type", "value"));
 
-			Expect(manager.GetClaims(user.Id), Is.Empty);
+			Assert.That(manager.GetClaims(user.Id), Is.Empty);
 		}
 
 		[Test]
@@ -58,7 +58,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.RemoveClaim(user.Id, new Claim("otherType", "value"));
 
-			Expect(manager.GetClaims(user.Id), Is.Not.Empty);
+			Assert.That(manager.GetClaims(user.Id), Is.Not.Empty);
 		}
 
 		[Test]
@@ -71,7 +71,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.RemoveClaim(user.Id, new Claim("type", "otherValue"));
 
-			Expect(manager.GetClaims(user.Id), Is.Not.Empty);
+			Assert.That(manager.GetClaims(user.Id), Is.Not.Empty);
 		}
 	}
 }

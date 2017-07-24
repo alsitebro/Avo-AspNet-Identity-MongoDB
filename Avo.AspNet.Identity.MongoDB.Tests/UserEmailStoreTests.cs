@@ -16,7 +16,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var email = manager.GetEmail(user.Id);
 
-			Expect(email, Is.Null);
+			Assert.That(email, Is.Null);
 		}
 
 		[Test]
@@ -28,7 +28,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.SetEmail(user.Id, "email");
 
-			Expect(manager.GetEmail(user.Id), Is.EqualTo("email"));
+			Assert.That(manager.GetEmail(user.Id), Is.EqualTo("email"));
 		}
 
 		[Test]
@@ -37,11 +37,11 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			var user = new IdentityUser("bob");
 			var manager = GetUserManager();
 			manager.Create(user);
-			Expect(manager.FindByEmail("email"), Is.Null);
+			Assert.That(manager.FindByEmail("email"), Is.Null);
 
 			manager.SetEmail(user.Id, "email");
 
-			Expect(manager.FindByEmail("email"), Is.Not.Null);
+			Assert.That(manager.FindByEmail("email"), Is.Not.Null);
 		}
 
 		[Test]
@@ -53,7 +53,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var isConfirmed = manager.IsEmailConfirmed(user.Id);
 
-			Expect(isConfirmed, Is.False);
+			Assert.That(isConfirmed, Is.False);
 		}
 
 		[Test]
@@ -68,7 +68,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.ConfirmEmail(user.Id, token);
 
 			var isConfirmed = manager.IsEmailConfirmed(user.Id);
-			Expect(isConfirmed);
+			Assert.That(isConfirmed);
 		}
 
 		[Test]
@@ -84,7 +84,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.SetEmail(user.Id, "new@email.com");
 
 			var isConfirmed = manager.IsEmailConfirmed(user.Id);
-			Expect(isConfirmed, Is.False);
+			Assert.That(isConfirmed, Is.False);
 		}
 	}
 }

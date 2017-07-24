@@ -14,8 +14,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			Users.InsertOne(user);
 
-			Expect(user.Id, Is.Not.Null);
-			Expect(ObjectId.Parse(user.Id), Is.Not.EqualTo(ObjectId.Empty));
+			Assert.That(user.Id, Is.Not.Null);
+			Assert.That(ObjectId.Parse(user.Id), Is.Not.EqualTo(ObjectId.Empty));
 		}
 	}
 }

@@ -16,7 +16,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.SetTwoFactorEnabled(user.Id, true);
 
-			Expect(manager.GetTwoFactorEnabled(user.Id));
+			Assert.That(manager.GetTwoFactorEnabled(user.Id));
 		}
 
 		[Test]
@@ -29,7 +29,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.SetTwoFactorEnabled(user.Id, false);
 
-			Expect(manager.GetTwoFactorEnabled(user.Id), Is.False);
+			Assert.That(manager.GetTwoFactorEnabled(user.Id), Is.False);
 		}
 	}
 }

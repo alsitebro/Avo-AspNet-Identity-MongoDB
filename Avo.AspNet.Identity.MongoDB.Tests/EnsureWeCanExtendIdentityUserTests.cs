@@ -38,7 +38,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			_Manager.Create(_User);
 
 			var savedUser = Database.GetCollection<ExtendedIdentityUser>("users").AsQueryable().Single();
-			Expect(savedUser.ExtendedField, Is.EqualTo("extendedField"));
+			Assert.That(savedUser.ExtendedField, Is.EqualTo("extendedField"));
 		}
 
 		[Test]
@@ -49,7 +49,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			_Manager.Create(_User);
 
 			var savedUser = _Manager.FindById(_User.Id);
-			Expect(savedUser.ExtendedField, Is.EqualTo("extendedField"));
+			Assert.That(savedUser.ExtendedField, Is.EqualTo("extendedField"));
 		}
 	}
 }

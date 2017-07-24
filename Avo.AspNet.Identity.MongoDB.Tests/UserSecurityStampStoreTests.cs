@@ -18,7 +18,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
             manager.Create(user);
 
             var savedUser = Users.AsQueryable().Single();
-            Expect(savedUser.SecurityStamp, Is.Not.Null);
+            Assert.That(savedUser.SecurityStamp, Is.Not.Null);
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
             var stamp = manager.GetSecurityStamp(user.Id);
 
-            Expect(stamp, Is.Not.Null);
+            Assert.That(stamp, Is.Not.Null);
         }
     }
 }

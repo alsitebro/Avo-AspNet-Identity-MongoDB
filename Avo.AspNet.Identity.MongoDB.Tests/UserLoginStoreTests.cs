@@ -20,8 +20,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.AddLogin(user.Id, login);
 
 			var savedLogin = Users.AsQueryable().Single().Logins.Single();
-			Expect(savedLogin.LoginProvider, Is.EqualTo("provider"));
-			Expect(savedLogin.ProviderKey, Is.EqualTo("key"));
+			Assert.That(savedLogin.LoginProvider, Is.EqualTo("provider"));
+			Assert.That(savedLogin.ProviderKey, Is.EqualTo("key"));
 		}
 
 
@@ -37,7 +37,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.RemoveLogin(user.Id, login);
 
 			var savedUser = Users.AsQueryable().Single();
-			Expect(savedUser.Logins, Is.Empty);
+			Assert.That(savedUser.Logins, Is.Empty);
 		}
 
 		[Test]
@@ -52,8 +52,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			var logins = manager.GetLogins(user.Id);
 
 			var savedLogin = logins.Single();
-			Expect(savedLogin.LoginProvider, Is.EqualTo("provider"));
-			Expect(savedLogin.ProviderKey, Is.EqualTo("key"));
+			Assert.That(savedLogin.LoginProvider, Is.EqualTo("provider"));
+			Assert.That(savedLogin.ProviderKey, Is.EqualTo("key"));
 		}
 
 		[Test]
@@ -67,7 +67,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var findUser = manager.Find(login);
 
-			Expect(findUser, Is.Not.Null);
+			Assert.That(findUser, Is.Not.Null);
 		}
 
 		[Test]
@@ -81,7 +81,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var findUser = manager.Find(new UserLoginInfo("provider", "otherkey"));
 
-			Expect(findUser, Is.Null);
+			Assert.That(findUser, Is.Null);
 		}
 
 		[Test]
@@ -95,7 +95,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var findUser = manager.Find(new UserLoginInfo("otherprovider", "key"));
 
-			Expect(findUser, Is.Null);
+			Assert.That(findUser, Is.Null);
 		}
 	}
 }

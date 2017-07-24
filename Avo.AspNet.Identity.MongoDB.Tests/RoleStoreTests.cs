@@ -19,7 +19,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.Create(role);
 
 			var savedRole = Roles.AsQueryable().Single();
-			Expect(savedRole.Name, Is.EqualTo(roleName));
+			Assert.That(savedRole.Name, Is.EqualTo(roleName));
 		}
 
 		[Test]
@@ -32,8 +32,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var foundRole = manager.FindByName(roleName);
 
-			Expect(foundRole, Is.Not.Null);
-			Expect(foundRole.Name, Is.EqualTo(roleName));
+			Assert.That(foundRole, Is.Not.Null);
+			Assert.That(foundRole.Name, Is.EqualTo(roleName));
 		}
 
 		[Test]
@@ -45,8 +45,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var foundRole = manager.FindById(role.Id);
 
-			Expect(foundRole, Is.Not.Null);
-			Expect(foundRole.Id, Is.EqualTo(role.Id));
+			Assert.That(foundRole, Is.Not.Null);
+			Assert.That(foundRole.Id, Is.EqualTo(role.Id));
 		}
 
 		[Test]
@@ -55,11 +55,11 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			var role = new IdentityRole("name");
 			var manager = GetRoleManager();
 			manager.Create(role);
-			Expect(Roles.AsQueryable(), Is.Not.Empty);
+			Assert.That(Roles.AsQueryable(), Is.Not.Empty);
 
 			manager.Delete(role);
 
-			Expect(Roles.AsQueryable(), Is.Empty);
+			Assert.That(Roles.AsQueryable(), Is.Empty);
 		}
 
 		[Test]
@@ -74,8 +74,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.Update(savedRole);
 
 			var changedRole = Roles.AsQueryable().Single();
-			Expect(changedRole, Is.Not.Null);
-			Expect(changedRole.Name, Is.EqualTo("newname"));
+			Assert.That(changedRole, Is.Not.Null);
+			Assert.That(changedRole.Name, Is.EqualTo("newname"));
 		}
 	}
 }

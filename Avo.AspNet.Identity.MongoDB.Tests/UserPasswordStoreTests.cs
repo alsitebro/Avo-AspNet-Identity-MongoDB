@@ -17,7 +17,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var hasPassword = manager.HasPassword(user.Id);
 
-			Expect(hasPassword, Is.False);
+			Assert.That(hasPassword, Is.False);
 		}
 
 		[Test]
@@ -28,7 +28,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.Create(user);
             manager.AddPassword(user.Id, "testtest");
             var findUserByPassword = manager.Find("bob", "testtest");
-			Expect(findUserByPassword, Is.Not.Null);
+			Assert.That(findUserByPassword, Is.Not.Null);
 		}
 
 		[Test]
@@ -42,7 +42,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.RemovePassword(user.Id);
 
 			var savedUser = Users.AsQueryable().Single();
-			Expect(savedUser.PasswordHash, Is.Null);
+			Assert.That(savedUser.PasswordHash, Is.Null);
 		}
 	}
 }

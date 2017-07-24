@@ -17,7 +17,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var roles = manager.GetRoles(user.Id);
 
-			Expect(roles, Is.Empty);
+			Assert.That(roles, Is.Empty);
 		}
 
 		[Test]
@@ -30,8 +30,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.AddToRole(user.Id, "role");
 
 			var savedUser = Users.AsQueryable().Single();
-			Expect(savedUser.Roles, Is.EquivalentTo(new[] {"role"}));
-			Expect(manager.IsInRole(user.Id, "role"), Is.True);
+			Assert.That(savedUser.Roles, Is.EquivalentTo(new[] {"role"}));
+			Assert.That(manager.IsInRole(user.Id, "role"), Is.True);
 		}
 
 		[Test]
@@ -45,8 +45,8 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.RemoveFromRole(user.Id, "role");
 
 			var savedUser = Users.AsQueryable().Single();
-			Expect(savedUser.Roles, Is.Empty);
-			Expect(manager.IsInRole(user.Id, "role"), Is.False);
+			Assert.That(savedUser.Roles, Is.Empty);
+			Assert.That(manager.IsInRole(user.Id, "role"), Is.False);
 		}
 	}
 }

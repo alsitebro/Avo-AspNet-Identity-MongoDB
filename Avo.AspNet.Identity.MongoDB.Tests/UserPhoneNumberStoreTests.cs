@@ -18,7 +18,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.SetPhoneNumber(user.Id, PhoneNumber);
 
-			Expect(manager.GetPhoneNumber(user.Id), Is.EqualTo(PhoneNumber));
+			Assert.That(manager.GetPhoneNumber(user.Id), Is.EqualTo(PhoneNumber));
 		}
 
 		[Test]
@@ -31,7 +31,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.ChangePhoneNumber(user.Id, PhoneNumber, token);
 
-			Expect(manager.IsPhoneNumberConfirmed(user.Id));
+			Assert.That(manager.IsPhoneNumberConfirmed(user.Id));
 		}
 
 		[Test]
@@ -45,7 +45,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.SetPhoneNumber(user.Id, PhoneNumber);
 
-			Expect(manager.IsPhoneNumberConfirmed(user.Id), Is.False);
+			Assert.That(manager.IsPhoneNumberConfirmed(user.Id), Is.False);
 		}
 	}
 }

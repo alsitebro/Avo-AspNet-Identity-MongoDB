@@ -18,7 +18,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.AccessFailed(user.Id);
 
-			Expect(manager.GetAccessFailedCount(user.Id), Is.EqualTo(1));
+			Assert.That(manager.GetAccessFailedCount(user.Id), Is.EqualTo(1));
 		}
 
 		[Test]
@@ -29,7 +29,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			var count = store.IncrementAccessFailedCountAsync(user);
 
-			Expect(count.Result, Is.EqualTo(1));
+			Assert.That(count.Result, Is.EqualTo(1));
 		}
 
 		[Test]
@@ -43,7 +43,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.ResetAccessFailedCount(user.Id);
 
-			Expect(manager.GetAccessFailedCount(user.Id), Is.EqualTo(0));
+			Assert.That(manager.GetAccessFailedCount(user.Id), Is.EqualTo(0));
 		}
 
 		[Test]
@@ -56,7 +56,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
 			manager.AccessFailed(user.Id);
 
-			Expect(manager.GetLockoutEndDate(user.Id), Is.EqualTo(DateTimeOffset.MinValue));
+			Assert.That(manager.GetLockoutEndDate(user.Id), Is.EqualTo(DateTimeOffset.MinValue));
 		}
 
 		[Test]
@@ -71,7 +71,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.AccessFailed(user.Id);
 
 			var lockoutEndDate = manager.GetLockoutEndDate(user.Id);
-			Expect(lockoutEndDate.Subtract(DateTime.UtcNow).TotalHours, Is.GreaterThan(0.9).And.LessThan(1.1));
+			Assert.That(lockoutEndDate.Subtract(DateTime.UtcNow).TotalHours, Is.GreaterThan(0.9).And.LessThan(1.1));
 		}
 
 		[Test]
@@ -82,10 +82,10 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 			manager.Create(user);
 
 			manager.SetLockoutEnabled(user.Id, true);
-			Expect(manager.GetLockoutEnabled(user.Id));
+			Assert.That(manager.GetLockoutEnabled(user.Id));
 
 			manager.SetLockoutEnabled(user.Id, false);
-			Expect(manager.GetLockoutEnabled(user.Id), Is.False);
+			Assert.That(manager.GetLockoutEnabled(user.Id), Is.False);
 		}
 	}
 }
