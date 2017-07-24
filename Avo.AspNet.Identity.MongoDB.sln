@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avo.AspNet.Identity.MongoDB", "Avo.AspNet.Identity.MongoDB\Avo.AspNet.Identity.MongoDB.csproj", "{2BE85CA3-ED6D-494B-84C7-0231A49BB99B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avo.AspNet.Identity.MongoDB.Tests", "Avo.AspNet.Identity.MongoDB.Tests\Avo.AspNet.Identity.MongoDB.Tests.csproj", "{4848C275-0F16-4AF9-81E8-702C7B5D6543}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4D435AD4-87ED-4CBB-B5B6-9B3F3A820CB6}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

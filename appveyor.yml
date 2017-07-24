@@ -1,4 +1,8 @@
 configuration: Release
  # Restore NuGet packages before running MSBuild
- before_build:
-    nuget restore
+before_build:
+  - nuget restore
+
+build:
+  verbosity: minimal
+  publish_wap: true
