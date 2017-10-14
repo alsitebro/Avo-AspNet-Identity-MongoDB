@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Avo.AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
 using MongoDB.Driver;
 using NUnit.Framework;
@@ -25,7 +24,7 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 		public void BeforeEachTestAfterBase()
 		{
 			var users = Database.GetCollection<ExtendedIdentityUser>("users");
-			var userStore = new UserStore<ExtendedIdentityUser>(users);
+			var userStore = new IdentityStore<ExtendedIdentityUser>(users);
 			_Manager = new UserManager<ExtendedIdentityUser>(userStore);
 			_User = new ExtendedIdentityUser("bob");
 		}

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="IdentityRole.cs" />
+    <Compile Include="IdentityStore.cs" />
     <Compile Include="IdentityUser.cs" />
     <Compile Include="IdentityUserClaim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Security.Claims;
-using Avo.AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
 using NUnit.Framework;
 
