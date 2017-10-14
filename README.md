@@ -8,7 +8,7 @@ ASP.NET MVC 5 shipped with a new Identity system (in the Microsoft.AspNet.Identi
 
 ASP.NET Identity 2.x has matured at version 2.2.1 and the ASP.NET team is now focused on [3.x for ASP.NET Core](https://github.com/aspnet/Identity/). 
 
-[Tugburk Ugurlu](https://github.com/tugberkugurlu/AspNetCore.Identity.MongoDB) currently maintains a MongoDB provider if you're interested in that.
+[Tugburk Ugurlu](https://github.com/tugberkugurlu/AspNetCore.Identity.MongoDB) currently maintains a MongoDB provider for ASP.NET Core Identity if you're interested in that.
 
 I did this first as part of a learning process, then thought I'd share it with the community.
 
