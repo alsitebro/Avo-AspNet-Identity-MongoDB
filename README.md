@@ -18,7 +18,7 @@ Please feel free to use, review and improve.
 
 ## Features ##
 * Drop-in replacement for ASP.NET Identity EntityFramework storage provider with MongoDB as the backing store.
-* Requires only 1 mongo document type for user storage, while EntityFramework requires 5 tables
+* Requires only 1 BsonDocument per TUser, stored in 1 IMongoCollection for users, while EntityFramework stores user-related data in 5 tables
 * Contains the same IdentityUser class used by the EntityFramework provider in the MVC 5 project template.
 * Supports additional profile properties on your application's user model.
 * Provides implementations for IUserStore<TUser> in 4 variants:
