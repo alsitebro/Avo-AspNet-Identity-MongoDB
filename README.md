@@ -1,6 +1,6 @@
 ## Avo.AspNet.Identity.MongoDB ##
 
-MongoDB storage provider library for ASP.NET Identity 2.2.1
+[MongoDB storage provider library for ASP.NET Identity 2.2.1](https://www.nuget.org/packages/Avo.AspNet.Identity.MongoDB)
 
 ## Purpose ##
 
