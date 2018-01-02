@@ -6,3 +6,5 @@ before_build:
   - nuget restore
 build:
   verbosity: minimal
+# Because our unit tests require a running MongoDB server
+test: off
