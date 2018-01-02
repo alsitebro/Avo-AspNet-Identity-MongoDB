@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Avo.AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
 using MongoDB.Bson;
 using MongoDB.Driver;

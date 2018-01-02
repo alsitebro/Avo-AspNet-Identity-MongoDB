@@ -29,19 +29,28 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
 
         protected UserManager<IdentityUser> GetUserManager()
         {
-            var store = new UserStore<IdentityUser>(Users);
-            return new UserManager<IdentityUser>(store);
+            //var store = new UserStore<IdentityUser>(Users);
+            //return new UserManager<IdentityUser>(store);
+            return GetIdentityUserManager();
         }
 
         protected UserManager<IdentityUser> GetUserClaimManager()
         {
-            var store = new UserClaimStore<IdentityUser>(Users);
-            return new UserManager<IdentityUser>(store);
+            //var store = new UserClaimStore<IdentityUser>(Users);
+            //return new UserManager<IdentityUser>(store);
+            return GetIdentityUserManager();
         }
 
         protected UserManager<IdentityUser> GetUserRoleManager()
         {
-            var store = new UserRoleStore<IdentityUser>(Users);
+            //var store = new UserRoleStore<IdentityUser>(Users);
+            //return new UserManager<IdentityUser>(store);
+            return GetIdentityUserManager();
+        }
+
+        protected UserManager<IdentityUser> GetIdentityUserManager()
+        {
+            var store = new IdentityStore<IdentityUser>(Users);
             return new UserManager<IdentityUser>(store);
         }
 
