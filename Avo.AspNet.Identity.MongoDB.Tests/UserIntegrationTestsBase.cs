@@ -1,5 +1,4 @@
-﻿using Avo.AspNet.Identity.MongoDB;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using MongoDB.Driver;
 using NUnit.Framework;
 
@@ -10,41 +9,36 @@ namespace Avo.AspNet.Identity.MongoDB.Tests
         protected IMongoDatabase Database;
         protected IMongoCollection<IdentityUser> Users;
         protected IMongoCollection<IdentityRole> Roles;
-        
+        protected IMongoClient Client = new MongoClient("mongodb://localhost:27017");
 
         [SetUp]
         public void BeforeEachTest()
         {
-            var client = new MongoClient("mongodb://localhost:27017");
-            var identityTesting = "identity-testing";
-
-           
-            Database = client.GetDatabase(identityTesting);
+            Database = Client.GetDatabase("identity-testing");
             Users = Database.GetCollection<IdentityUser>("users");
             Roles = Database.GetCollection<IdentityRole>("roles");
+        }
 
+        [TearDown]
+        public void AfterTest()
+        {
             Database.DropCollection("users");
             Database.DropCollection("roles");
+            Client.DropDatabase("identity-testing");
         }
 
         protected UserManager<IdentityUser> GetUserManager()
         {
-            //var store = new UserStore<IdentityUser>(Users);
-            //return new UserManager<IdentityUser>(store);
             return GetIdentityUserManager();
         }
 
         protected UserManager<IdentityUser> GetUserClaimManager()
         {
-            //var store = new UserClaimStore<IdentityUser>(Users);
-            //return new UserManager<IdentityUser>(store);
             return GetIdentityUserManager();
         }
 
         protected UserManager<IdentityUser> GetUserRoleManager()
         {
-            //var store = new UserRoleStore<IdentityUser>(Users);
-            //return new UserManager<IdentityUser>(store);
             return GetIdentityUserManager();
         }
 
