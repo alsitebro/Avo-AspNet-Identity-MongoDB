@@ -1,5 +1,7 @@
 ## Avo.AspNet.Identity.MongoDB ##
 
+[![Build status](https://ci.appveyor.com/api/projects/status/t6kespv5wff9h420/branch/master?svg=true)](https://ci.appveyor.com/project/alsitebro/avo-aspnet-identity-mongodb/branch/master)
+
 [MongoDB storage provider library for ASP.NET Identity 2.2.1](https://www.nuget.org/packages/Avo.AspNet.Identity.MongoDB)
 
 ## Purpose ##
